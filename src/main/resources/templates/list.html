@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: headstuff">
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="base :: navbar"></nav>
+    <div class="container">
+        <div class="jumbotron">
+    <h2>All messages</h2>
+    <p><a class="btn btn-primary btn-lg" href="/add" role="button">Add a message</a></p>
+    <div th:each="message : ${messages}">
+        <hr />
+        <p th:inline="text"><span style="font-size: 23pt;">[[${message.content}]]</span> </p>
+        <p th:inline="text"><span style="font-size: 10pt;">Sent by: [[${message.sentby}]]<br/> Date: [[${message.posteddate}]]</span></p>
+
+    </div></div></div>
+    <hr />
+<nav th:replace="base :: footer"></nav>
+<th:block th:replace="base :: jslinks"></th:block>
+</body>
+</html>

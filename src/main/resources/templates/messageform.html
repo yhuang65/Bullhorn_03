@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: headstuff">
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="base :: navbar"></nav>
+<div class="container">
+    <div class="jumbotron">
+<form action="#" th:action="@{/process}" th:object="${message}"  method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    Sent by :<input type="text" th:field="*{sentby}" />
+    <span th:if="${#fields.hasErrors('sentby')}"
+          th:errors="*{sentby}"></span><br />
+    Content :<textarea rows="3" th:field="*{content}" />
+    <span th:if="${#fields.hasErrors('content')}"
+          th:errors="*{content}"></span><br />
+    Date :<input type="text" th:field="*{posteddate}" placeholder="MM/DD/YYYY" />
+    <span th:if="${#fields.hasErrors('posteddate')}"
+          th:errors="*{posteddate}"></span>
+    <br /><br />
+    <span><input type="submit" class="btn btn-primary btn-md" value="Submit" rol="button"/></span>
+</form></div></div>
+<nav th:replace="base :: footer"></nav>
+<th:block th:replace="base :: jslinks"></th:block>
+</body>
+</html>
